@@ -3,6 +3,11 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const SQL = `
+
+-- Reset the database for development purposes
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS users;
+
 -- Create the 'users' table
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,

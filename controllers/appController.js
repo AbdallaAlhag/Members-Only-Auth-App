@@ -1,9 +1,13 @@
-// const {  } = require('../db/queries.js');
+const { getMessages } = require('../db/queries.js');
 
-function getHomePage(req, res) {
-    res.render('index');
+async function getHomePage(req, res) {
+    const messages = await getMessages();
+    console.log(messages)
+    res.render('index', {
+        messages: messages,
+    });
 }
 
-module.exports =  {
+module.exports = {
     getHomePage,
 };

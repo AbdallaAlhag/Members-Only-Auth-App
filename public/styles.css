@@ -72,22 +72,6 @@ body {
   color: #ffffff;
 }
 
-@media (max-width: 768px) {
-  .header .container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav {
-    margin-top: 1rem;
-  }
-
-  .welcome-message {
-    margin-right: 0;
-    margin-bottom: 0.5rem;
-  }
-}
-
 .log-in-container {
   max-width: 450px;
   margin: 2rem auto;
@@ -168,6 +152,67 @@ form button:hover {
   text-decoration: underline;
 }
 
+main.container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.message-board {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.message-content {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem 0;
+}
+
+.message-content:last-child {
+  border-bottom: none;
+}
+
+.message-content p {
+  margin: 0.5rem 0;
+}
+
+.message-content p:first-child {
+  font-weight: bold;
+  color: #4a5568;
+}
+
+.message-content p:nth-child(2) {
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+.message-content p:last-child {
+  color: #4a5568;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #4a5568;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.btn:hover {
+  background-color: #2d3748;
+}
+
 @media (max-width: 768px) {
   .header .container {
     flex-direction: column;
@@ -181,6 +226,14 @@ form button:hover {
   .welcome-message {
     margin-right: 0;
     margin-bottom: 0.5rem;
+  }
+
+  .message-board {
+    padding: 1rem;
+  }
+
+  .message-content {
+    padding: 0.75rem 0;
   }
 
   .log-in-container {
