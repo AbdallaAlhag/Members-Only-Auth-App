@@ -1,4 +1,4 @@
-import pool  from "./pool.js";
+const pool = require('./pool');
 // export async function getUserMessages() {
 //     const { rows } = await pool.query("SELECT * FROM minimessageboard");
 //     return rows;

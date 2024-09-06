@@ -1,10 +1,7 @@
-import pkg from 'pg';
-import dotenv from 'dotenv';
+const { Pool } = require('pg');
+const dotenv = require('dotenv');
 dotenv.config();
 
-const { Pool } = pkg;
-// All of the following properties should be read from environment variables
-// We're hardcoding them here for simplicity
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 });
@@ -21,4 +18,4 @@ async function testConnection() {
 
 testConnection();
 
-export default pool;
+module.exports = pool;

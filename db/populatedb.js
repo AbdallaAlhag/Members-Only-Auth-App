@@ -1,8 +1,5 @@
-#! /usr/bin/env node
-// run with `node db/populatedb.js`
-import pkg from 'pg';
-const { Client } = pkg;
-import dotenv from 'dotenv';
+const { Client } = require('pg');
+const dotenv = require('dotenv');
 dotenv.config();
 
 const SQL = `
