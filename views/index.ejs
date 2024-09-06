@@ -6,18 +6,21 @@
     <main class="container">
       <h1>Welcome to Members Only</h1>
       <div class="message-board">
-          <% messages.slice().reverse().forEach((message, index) => { %> <%
-          const messageIndex = messages.length - index - 1; %>
-            <div class="message-content">
-              <!-- grab user name somehow-->
-              <p>Anonymous</p>
-              <p><%= message.title %> </p>
-              <p><%= message.content %></p>
-              <!-- <div>
+        <% messages.slice().reverse().forEach((message, index) => { %> <% const
+        messageIndex = messages.length - index - 1; %>
+        <div class="message-content">
+          <!-- grab user name somehow-->
+          <p>
+            <%= currentUser ? (message.username ? message.username : "Anonymous") + " " + moment(message.date).fromNow() : "Anonymous" %>
+
+          </p>
+          <p><%= message.title %></p>
+          <p><%= message.content %></p>
+          <!-- <div>
                 <a href="/details/<%= messageIndex %>" class="btn">Open</a>
               </div> -->
-            </div>
-          <% }) %>
+        </div>
+        <% }) %>
       </div>
       <!-- Your existing page content goes here -->
     </main>

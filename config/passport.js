@@ -1,4 +1,4 @@
-const pool = require('../db/pool'); // Adjust path as needed
+const pool = require('../db/pool');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
@@ -33,3 +33,5 @@ passport.deserializeUser(async (id, done) => {
         done(err);
     }
 });
+
+module.exports = passport;
