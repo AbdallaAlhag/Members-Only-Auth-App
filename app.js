@@ -5,9 +5,8 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
-const router = require('./routes/index.js');
-const indexRouter = require('./routes/index');
-const authRouter = require('./routes/auth');
+const indexRouter = require('./routes/indexRouter');
+const authRouter = require('./routes/authRouter');
 const errorHandler = require('./middleware/errorHandler');
 
 
@@ -15,6 +14,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
@@ -26,7 +26,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/', router)
+app.use('/', indexRouter);
+app.use('/', authRouter);
 
 app.use(errorHandler);
 

@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title></title>
-  </head>
+  <%- include("./partials/head.ejs") %>
   <body>
     <%- include("./partials/header.ejs") %>
-    <h1>Sign Up</h1>
-    <form action="" method="POST">
-      <label for="username">Username</label>
-      <input id="username" name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <button>Sign Up</button>
-    </form>
+    <div class="container">
+      <div class="log-in-container">
+        <h1>Sign up</h1>
+        <form action="" method="POST">
+          <div class="name-container">
+            <div class="name">
+              <label for="firstName">First Name</label>
+              <input
+                id="firstName"
+                name="firstName"
+                placeholder="Enter your first name"
+                type="text"
+              />
+            </div>
+            <div class="name">
+              <label for="lastName">Last Name</label>
+              <input
+                id="lastName"
+                name="lastName"
+                placeholder="Enter your lastName"
+                type="text"
+              />
+            </div>
+          </div>
+          <label for="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            type="text"
+          />
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            type="password"
+          />
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            type="password"
+          />
+          <button>Sign Up</button>
+        </form>
+        <a href="/sign-up">Don't have an account? Sign up</a>
+      </div>
+    </div>
   </body>
 </html>

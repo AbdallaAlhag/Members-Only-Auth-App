@@ -2,7 +2,11 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const pool = require('../db/pool');
 
-exports.getSignUpForm = (req, res) => {
+exports.getLoginForm = (req, res) => {
+    res.render('log-in');
+};
+
+exports.getSignupForm = (req, res) => {
     res.render('sign-up');
 };
 
