@@ -176,12 +176,25 @@ h1 {
   padding: 1rem 0;
 }
 
+
 .message-content:last-child {
   border-bottom: none;
 }
 
 .message-content p {
   margin: 0.5rem 0;
+}
+
+.message-content .message-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-content .message-header a{
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
 }
 
 .message-content p:first-child {
@@ -196,6 +209,10 @@ h1 {
 
 .message-content p:last-child {
   color: #4a5568;
+}
+
+.message-content h4{
+  margin: 0.5rem 0;
 }
 
 .btn {

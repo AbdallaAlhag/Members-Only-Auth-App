@@ -4,25 +4,36 @@
   <body>
     <%- include("./partials/header.ejs") %>
     <main class="container">
-      <h1>Welcome to Members Only</h1>
+      <h1>Message Board</h1>
       <div class="message-board">
-        <% messages.slice().reverse().forEach((message, index) => { %> <% const
-        messageIndex = messages.length - index - 1; %>
-        <div class="message-content">
-          <!-- grab user name somehow-->
-          <p>
-            <%= currentUser ? (message.username ? message.username : "Anonymous") + " " + moment(message.date).fromNow() : "Anonymous" %>
-
-          </p>
-          <p><%= message.title %></p>
-          <p><%= message.content %></p>
-          <!-- <div>
-                <a href="/details/<%= messageIndex %>" class="btn">Open</a>
-              </div> -->
-        </div>
+        <% messages.slice().reverse().forEach((message, index) => { %>
+          <% const messageIndex = messages.length - index - 1; %>
+          <div class="message-content">
+            <% if (currentUser) { %>
+              <div class="message-header">
+            <% } else { %>
+              <div>
+            <% } %>
+                <p>
+                  <%= message.username ? message.username : "Anonymous" %> • 
+                  <%= moment(message.date).fromNow() %>
+                </p>
+                <% if (currentUser) { %>
+                  <form
+                    action="/delete/<%= message.id %>?_method=DELETE"
+                    method="POST"
+                    style="display: inline"
+                  >
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button type="submit">Delete</button>
+                  </form>
+                <% } %>
+              </div>
+            <h4><%= message.title %></h4>
+            <p><%= message.content %></p>
+          </div>
         <% }) %>
       </div>
-      <!-- Your existing page content goes here -->
     </main>
   </body>
 </html>

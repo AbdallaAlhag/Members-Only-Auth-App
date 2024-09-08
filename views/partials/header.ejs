@@ -22,10 +22,18 @@
         <span>Members Only</span>
       </a>
     </div>
-    <h1>Welcome <%= currentUser ? currentUser.username : "Guest" %>!</h1>
+    <h1>
+      Welcome,
+      <% if (currentUser && currentUser.membership_status) { %>
+        <%= currentUser.username %> (Admin)
+      <% } else if (currentUser && !currentUser.membership_status) { %>
+        <%= currentUser.username %> (Member)
+      <% } else { %>
+        Guest
+      <% } %>
+    </h1>
     <nav class="nav">
       <% if (currentUser) { %>
-      <span class="welcome-message">Welcome, <%= currentUser.username %></span>
       <a href="/log-out" class="log-button">Log Out</a>
       <% } else { %>
       <a href="/log-in" class="log-button">Log In</a>

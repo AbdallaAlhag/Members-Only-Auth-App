@@ -4,6 +4,10 @@ async function getMessages() {
     return rows;
 }
 
+async function deleteMessageQuery(id){
+    console.log(id)
+    await pool.query('DELETE FROM messages WHERE id = $1', [id]);
+}
 // export async function insertUsername(username, text) {
 //     await pool.query("INSERT INTO minimessageboard (username, text) VALUES ($1, $2)", [username, text]);
 // }
@@ -15,4 +19,5 @@ async function getMessages() {
 
 module.exports = {
     getMessages,
+    deleteMessageQuery
 };
