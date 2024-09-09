@@ -269,6 +269,18 @@ h1 {
     margin: 1rem;
     padding: 1.5rem;
   }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .space-between-row{
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
 }
 
 .space-between-row {
