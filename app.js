@@ -30,13 +30,11 @@ app.use(express.urlencoded({ extended: true })); // For form submissions
 
 
 app.use((req, res, next) => {
-    // res.locals.currentUser = req.user;
     if (req.isAuthenticated()) {
         res.locals.currentUser = req.user;
     } else {
         res.locals.currentUser = null; // No user logged in
     }
-    // console.log(res.locals.currentUser);
     next();
 });
 

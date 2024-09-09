@@ -18,7 +18,6 @@ async function deleteMessageQuery(id) {
 
 async function insertMessageQuery(title, content, user_id) {
     const result = await pool.query('INSERT INTO messages (title, content, user_id) VALUES ($1, $2, $3) RETURNING *', [title, content, user_id]);
-    console.log(`Inserted message with id ${result.rows[0].id}`);
     return result.rows[0].id;
 }
 
