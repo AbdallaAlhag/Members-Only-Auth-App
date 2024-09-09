@@ -27,6 +27,7 @@ app.use((req, res, next) => {
     } else {
         res.locals.currentUser = null; // No user logged in
     }
+    // console.log(res.locals.currentUser);
     next();
 });
 

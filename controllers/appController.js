@@ -5,7 +5,6 @@ const { body, validationResult } = require("express-validator");
 
 async function getHomePage(req, res) {
     const messages = await getMessages();
-    console.log(messages);
     res.render('index', {
         messages: messages,
         moment: moment
@@ -21,7 +20,6 @@ async function deleteMessage(req, res) {
         let { id } = req.params;
         // Delete the message from the database
         await deleteMessageQuery(id);
-        console.log('Deleted message with id:', id);
         res.redirect('/');
     } catch (err) {
         console.error(err);

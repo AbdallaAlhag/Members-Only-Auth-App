@@ -28,6 +28,8 @@ CREATE TABLE IF NOT EXISTS messages (
     user_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
+-- THESE DON'T WORK SINCE THEY DON'T HAVE GENERATED PASSSWORDS!!!
+
 -- Insert sample data into the 'users' table
 INSERT INTO users (first_name, last_name, username, password, membership_status) 
 VALUES 
