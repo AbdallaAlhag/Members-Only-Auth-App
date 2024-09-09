@@ -1,7 +1,7 @@
 /* Add these styles to your existing CSS file */
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
@@ -245,7 +245,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
   }
-  .header-container h1{
+  .header-container h1 {
     text-align: center;
   }
   .nav {
@@ -282,8 +282,6 @@ h1 {
   font-size: 14px; /* Smaller font size for error messages */
   display: block; /* Make sure it appears as a block element */
 }
-
-
 
 .error-box {
   padding: 10px;

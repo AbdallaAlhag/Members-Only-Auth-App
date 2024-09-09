@@ -7,7 +7,7 @@ exports.getLoginForm = (req, res) => {
 };
 
 exports.getSignupForm = (req, res) => {
-    res.render('sign-up');
+    res.render('sign-up', { errors: {}, data: {} });
 };
 
 exports.signUp = async (req, res, next) => {
@@ -27,7 +27,7 @@ exports.signUp = async (req, res, next) => {
 
 exports.logIn = passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/',
+    failureRedirect: '/log-in', // Redirect back to login form if authentication fails
 });
 
 exports.logOut = (req, res, next) => {

@@ -15,7 +15,13 @@
                 name="firstName"
                 placeholder="Enter your first name"
                 type="text"
+                value="<%= data && data.firstName ? data.firstName : '' %>"
               />
+              <% if (errors && errors.firstName) { %>
+              <div class="error-box">
+                <span class="error"><%= errors.firstName %></span>
+              </div>
+              <% } %>
             </div>
             <div class="name">
               <label for="lastName">Last Name</label>
@@ -24,7 +30,13 @@
                 name="lastName"
                 placeholder="Enter your lastName"
                 type="text"
+                value="<%= data && data.lastName ? data.lastName : '' %>"
               />
+              <% if (errors && errors.lastName) { %>
+              <div class="error-box">
+                <span class="error"><%= errors.lastName %></span>
+              </div>
+              <% } %>
             </div>
           </div>
           <label for="username">Username</label>
@@ -33,7 +45,13 @@
             name="username"
             placeholder="Enter your username"
             type="text"
+            value="<%= data && data.username ? data.username : '' %>"
           />
+          <% if (errors && errors.username) { %>
+          <div class="error-box">
+            <span class="error"><%= errors.username %></span>
+          </div>
+          <% } %>
           <label for="password">Password</label>
           <input
             id="password"
@@ -41,6 +59,11 @@
             placeholder="Enter your password"
             type="password"
           />
+          <% if (errors && errors.password) { %>
+          <div class="error-box">
+            <span class="error"><%= errors.password %></span>
+          </div>
+          <% } %>
           <label for="confirmPassword">Confirm Password</label>
           <input
             id="confirmPassword"
@@ -48,6 +71,11 @@
             placeholder="Confirm your password"
             type="password"
           />
+          <% if (errors && errors.confirmPassword) { %>
+          <div class="error-box">
+            <span class="error"><%= errors.confirmPassword %></span>
+          </div>
+          <% } %>
           <button type="submit">Sign Up</button>
         </form>
         <a href="/sign-up">Already have an account? <strong>Login</strong></a>

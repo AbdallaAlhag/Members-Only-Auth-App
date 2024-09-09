@@ -13,5 +13,4 @@ Validated only the create form. Maybe update the rest later.
 -Todos:
     - Add more validation
         - Add validation to sign up with a cofirmPassword and validate using custom validation
-    - Fix message timestamp
 
