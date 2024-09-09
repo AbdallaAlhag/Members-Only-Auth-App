@@ -21,7 +21,7 @@
                 <% if (currentUser) { %>
                 <p>
                   <%= message.username ? message.username : "Anonymous" %> • 
-                  <%= moment(message.date).fromNow() %>
+                  <%= moment(message.timestamp).fromNow() %>
                 </p>
                   <% if (currentUser && currentUser.admin_status) { %>
                   <form
