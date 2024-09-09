@@ -23,6 +23,7 @@
                   <%= message.username ? message.username : "Anonymous" %> • 
                   <%= moment(message.date).fromNow() %>
                 </p>
+                  <% if (currentUser && currentUser.admin_status) { %>
                   <form
                     action="/delete/<%= message.id %>?_method=DELETE"
                     method="POST"
@@ -31,6 +32,7 @@
                     <input type="hidden" name="_method" value="DELETE" />
                     <button type="submit">Delete</button>
                   </form>
+                  <% } %>
                 <% } else { %>
                   <p>Anonymous</p>
                 <% } %>

@@ -14,9 +14,7 @@ async function deleteMessageQuery(id) {
     await pool.query('DELETE FROM messages WHERE id = $1', [id]);
 }
 
-// async function insertMessageQuery(title, content, user_id) {
-//     await pool.query('INSERT INTO messages (title, content, user_id) VALUES ($1, $2, $3)', [title, content, user_id]);
-// }
+
 
 async function insertMessageQuery(title, content, user_id) {
     const result = await pool.query('INSERT INTO messages (title, content, user_id) VALUES ($1, $2, $3) RETURNING *', [title, content, user_id]);
@@ -24,9 +22,14 @@ async function insertMessageQuery(title, content, user_id) {
     return result.rows[0].id;
 }
 
+async function updateAdminQuery(id) {
+    await pool.query('UPDATE users SET admin_status = true WHERE id = $1', [id]);
+}
+
 
 module.exports = {
     getMessages,
     deleteMessageQuery,
-    insertMessageQuery
+    insertMessageQuery,
+    updateAdminQuery
 };

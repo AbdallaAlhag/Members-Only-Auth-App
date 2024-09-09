@@ -1,5 +1,5 @@
 const moment = require('moment');
-const { getMessages, deleteMessageQuery, insertMessageQuery } = require('../db/queries.js');
+const { getMessages, deleteMessageQuery, insertMessageQuery, updateAdminQuery } = require('../db/queries.js');
 const { body, validationResult } = require("express-validator");
 
 
@@ -42,9 +42,41 @@ async function createMessage(req, res) {
     }
 }
 
+// probably should be in .env file lol
+const puzzle = [
+    {
+        question: 'What is the answer to life, the universe, and everything?',
+        answer: '42'
+    },
+    {
+        question: 'What is the capital of France?',
+        answer: 'Paris'
+    }
+];
+
+async function getAdminPage(req, res) {
+    const randomPuzzle = puzzle[Math.floor(Math.random() * puzzle.length)];
+    req.session.randomPuzzle = randomPuzzle;
+
+    res.render('admin', { errors: {}, data: {}, randomPuzzle }); // Send empty errors and data
+}
+
+async function adminUpdate(req, res) {
+    try {
+        const user_id = res.locals.currentUser.id;
+        await updateAdminQuery(user_id);
+        res.redirect('/');
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error updating admin status');
+    }
+};
+
 module.exports = {
     getHomePage,
     deleteMessage,
     getCreatePage,
-    createMessage
+    createMessage,
+    getAdminPage,
+    adminUpdate,
 };

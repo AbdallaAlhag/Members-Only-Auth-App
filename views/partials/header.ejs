@@ -24,15 +24,18 @@
     </div>
     <h1>
       Welcome,
-      <% if (currentUser && currentUser.membership_status) { %>
+      <% if (currentUser && currentUser.admin_status) { %>
         <%= currentUser.username %> (Admin)
-      <% } else if (currentUser && !currentUser.membership_status) { %>
+      <% } else if (currentUser && !currentUser.admin_status) { %>
         <%= currentUser.username %> (Member)
       <% } else { %>
         Guest
       <% } %>
     </h1>
     <nav class="nav">
+      <% if (currentUser && !currentUser.admin_status) { %>
+      <a href="/admin" class="nav-button">Upgrade to Admin</a>
+      <% } %>
       <% if (currentUser) { %>
       <a href="/log-out" class="nav-button">Log Out</a>
       <% } else { %>

@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
     last_name VARCHAR(100) NOT NULL,
     username VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    membership_status BOOLEAN DEFAULT false,
+    admin_status BOOLEAN DEFAULT false,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS messages (
 -- THESE DON'T WORK SINCE THEY DON'T HAVE GENERATED PASSSWORDS!!!
 
 -- Insert sample data into the 'users' table
-INSERT INTO users (first_name, last_name, username, password, membership_status) 
+INSERT INTO users (first_name, last_name, username, password, admin_status) 
 VALUES 
     ('John', 'Doe', 'johndoe', 'password123', true),
     ('Jane', 'Smith', 'janesmith', 'securepass', false),

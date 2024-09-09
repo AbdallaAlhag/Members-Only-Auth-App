@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/header.ejs") %>
+    <div class="container">
+      <div class="log-in-container">
+        <h1>Admin</h1>
+        <p><%= randomPuzzle ? randomPuzzle.question : '' %></p>
+        <form action="/admin" method="POST">
+          <label for="puzzleQuestion"
+            >Enter the passcode to become an admin</label
+          >
+          <input
+            id="puzzleAnswer"
+            name="puzzleAnswer"
+            placeholder="Passcode"
+            type="text"
+            required
+          />
+          <% if (errors.puzzleAnswer) { %>
+          <p class="error"><%= errors.puzzleAnswer %></p>
+          <% } %>
+          <button type="submit">create</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
