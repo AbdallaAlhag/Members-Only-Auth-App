@@ -4,20 +4,16 @@ async function getMessages() {
     return rows;
 }
 
-async function deleteMessageQuery(id){
-    console.log(id)
+async function deleteMessageQuery(id) {
     await pool.query('DELETE FROM messages WHERE id = $1', [id]);
 }
-// export async function insertUsername(username, text) {
-//     await pool.query("INSERT INTO minimessageboard (username, text) VALUES ($1, $2)", [username, text]);
-// }
 
-// export async function getSingleMessages(id) {
-//     const { rows } = await pool.query("SELECT * FROM minimessageboard WHERE id = $1", [id]);
-//     return rows[0] || null;
-// }
+async function insertMessageQuery(title, content, user_id) {
+    await pool.query('INSERT INTO messages (title, content, user_id) VALUES ($1, $2, $3)', [title, content, user_id]);
+}
 
 module.exports = {
     getMessages,
-    deleteMessageQuery
+    deleteMessageQuery,
+    insertMessageQuery
 };

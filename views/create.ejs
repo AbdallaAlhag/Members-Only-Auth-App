@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/header.ejs") %>
+    <div class="container">
+      <div class="log-in-container">
+        <h1>Create New Message</h1>
+        <form action="/create" method="POST">
+          <label for="title">Title</label>
+          <input
+            id="title"
+            name="title"
+            placeholder="Enter Title"
+            type="text"
+            value="<%= data && data.title ? data.title : '' %>"
+          />
+          <% if (errors && errors.title) { %>
+          <div class="error-box">
+            <span class="error"><%= errors.title %></span>
+          </div>
+          <% } %>
+
+          <label for="content">Message</label>
+          <textarea
+            id="content"
+            name="content"
+            rows="4"
+            cols="50"
+            placeholder="Enter a Message"
+          >
+<%= data && data.content ? data.content : '' %></textarea
+          >
+          <% if (errors && errors.content) { %>
+          <div class="error-box">
+            <span class="error"><%= errors.content %></span>
+          </div>
+          <% } %>
+          <button type="submit">create</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -4,7 +4,11 @@
   <body>
     <%- include("./partials/header.ejs") %>
     <main class="container">
-      <h1>Message Board</h1>
+      <div class="space-between-row">
+        <h1>Message Board</h1>
+        <% if (currentUser) { %><a href="/create" class="nav-button">New Message</a>
+        <% } %>
+      </div>
       <div class="message-board">
         <% messages.slice().reverse().forEach((message, index) => { %>
           <% const messageIndex = messages.length - index - 1; %>
