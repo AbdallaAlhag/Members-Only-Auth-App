@@ -3,7 +3,7 @@ const passport = require('passport');
 const pool = require('../db/pool');
 
 exports.getLoginForm = (req, res) => {
-    res.render('log-in');
+    res.render('log-in', { errorMessage: '' });
 };
 
 exports.getSignupForm = (req, res) => {
@@ -25,10 +25,28 @@ exports.signUp = async (req, res, next) => {
     }
 };
 
-exports.logIn = passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/log-in', // Redirect back to login form if authentication fails
-});
+// exports.logIn = passport.authenticate('local', {
+//     successRedirect: '/',
+//     failureRedirect: '/log-in', // Redirect back to login form if authentication fails
+// });
+
+exports.logIn = (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return next(err); // If there's an internal server error
+        }
+        if (!user) {
+            // Authentication failed, display the error message from the `info` object
+            return res.render('log-in', { errorMessage: info.message });
+        }
+        req.logIn(user, (err) => {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect('/');
+        });
+    })(req, res, next);
+};
 
 exports.logOut = (req, res, next) => {
     req.logout((err) => {

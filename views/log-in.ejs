@@ -9,9 +9,19 @@
         <p>Guest Account: username, password = guest, guest</p>
         <form action="/log-in" method="POST">
           <label for="username">Username</label>
-          <input id="username" name="username" placeholder="username" type="text" />
+          <input
+            id="username"
+            name="username"
+            placeholder="username"
+            type="text"
+          />
           <label for="password">Password</label>
           <input id="password" name="password" type="password" />
+          <% if (errorMessage) { %>
+          <div class="error-box">
+            <span class="error"><%= errorMessage %></span>
+          </div>
+          <% } %>
           <button>Log In</button>
         </form>
         <a href="/sign-up">Don't have an account? <strong>Sign up</strong></a>
