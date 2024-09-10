@@ -38,9 +38,20 @@ app.use(session({
     }
 }));
 
+if (process.env.NODE_ENV === 'production') {
+    app.use((req, res, next) => {
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+            // Redirect to the same URL but with HTTPS
+            return res.redirect(`https://${req.hostname}${req.url}`);
+        }
+        next();
+    });
+}
+
 app.use(passport.session());
 // app.use(express.urlencoded({ extended: false }));
 app.use(express.urlencoded({ extended: true })); // For form submissions
+
 
 
 app.use((req, res, next) => {
@@ -58,4 +69,4 @@ app.use('/', authRouter);
 app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
-app.listen(port, "0.0.0.0", () => console.log("app listening on port 8080!"));
+app.listen(port, "0.0.0.0", () => console.log("app listening on port 3000!"));
