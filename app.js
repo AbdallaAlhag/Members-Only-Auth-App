@@ -18,6 +18,7 @@ app.set("view engine", "ejs");
 
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json())
 // honestly don't know what most of the cookies do except for maxAge
 // and create a store for sessions since we are using railway to host, apparently the other way i did it was a memory leak
 app.use(session({
