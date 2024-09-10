@@ -21,7 +21,7 @@
 - EJS: Templating engine for rendering views.
 
 # Deployment:
-- Railway with PostgreSQL database in a Railway environment
+Deployed to Railway with PostgreSQL database in a Railway environment
 
 ## Features
 
