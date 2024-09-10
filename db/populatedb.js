@@ -7,6 +7,7 @@ const SQL = `
 -- Reset the database for development purposes
 DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS session;
 
 -- Create the 'users' table
 CREATE TABLE IF NOT EXISTS users (
@@ -27,6 +28,20 @@ CREATE TABLE IF NOT EXISTS messages (
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_id INT REFERENCES users(id) ON DELETE CASCADE
 );
+
+-- Create session table 
+CREATE TABLE IF NOT EXISTS session (
+    sid VARCHAR NOT NULL COLLATE "default",
+    sess JSON NOT NULL,
+    expire TIMESTAMP(6) NOT NULL,
+    PRIMARY KEY (sid)  -- Ensure this is the only primary key
+
+);
+
+
+--Clean up session after one day
+CREATE INDEX IDX_session_expire ON session (expire);
+
 
 -- THESE DON'T WORK SINCE THEY DON'T HAVE GENERATED PASSSWORDS!!!
 
