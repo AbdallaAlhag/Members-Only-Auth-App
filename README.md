@@ -1,6 +1,6 @@
 # Members Only Auth App
 
-[Live App](https://members-only-auth-app-production.up.railway.app/)
+[Live App]([https://members-only-auth-app-production.up.railway.app/](https://members-only-auth-app-production-3b75.up.railway.app/))
 
 
 ## Concepts Learned
